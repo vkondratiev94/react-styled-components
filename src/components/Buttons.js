@@ -4,15 +4,16 @@ import { teal, elevation } from '../utils'
 import { applyStyleModifiers } from 'styled-components-modifiers'
 
 const BUTTON_MODIFIERS = {
-  small: () => `
-    font-size: 1rem;
+  small: ({ theme }) => `
+    background-color: ${theme.colors.secondary};
     padding: 3px 10px;
+    font-size: 1rem;
   `,
 }
 
 
 export const Button = styled.button`
-  background-color: ${teal};
+  background-color: ${props => props.theme.colors.primary};
   border-radius: 4px;
   padding: 5px 10px;
   font-size: 2rem;
