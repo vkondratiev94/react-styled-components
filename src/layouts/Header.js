@@ -1,22 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from '../logo.svg'
+import { purple, social, elevation } from '../utils'
 
-const Header = () => {
-  return (
-    <AppHeader>
-      <img src={logo} alt="logo" className='logo' />
-    </AppHeader>
-  )
-}
+const Header = ({ className }) => (
+  <header className={className}>
+    <img src={logo} alt="logo" className='logo' />
+  </header>
+)
 
-const AppHeader = styled.header`
-  background-color: #524763;
+export default styled(Header)`
+  background-color: ${social.facebook};
   padding: 10px 5%;
+  ${elevation[2]};
 
   .logo {
     width: 60px;
   }
 `
-
-export default Header
