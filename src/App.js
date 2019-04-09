@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import GlobalStyle from './Global'
 import Header from './layouts/Header'
-import { Button, OutlinedButton } from './components'
+import { Button, OutlinedButton, Card } from './components'
 
 class App extends Component {
   render() {
@@ -9,8 +9,14 @@ class App extends Component {
       <div>
         <Header />
         <GlobalStyle />
-        <Button size='small'>Say Hello</Button>
-        <OutlinedButton>Don't Say Hello</OutlinedButton>
+        <main>
+          <Card>
+            <h2>Card Heading</h2>
+            <Card.Button modifiers='small'>Say Hello</Card.Button>
+          </Card>
+          <Button modifiers='small'>Say Hello</Button>
+          <OutlinedButton modifiers='small'>Don't Say Hello</OutlinedButton>
+        </main>
       </div>
     )
   }
