@@ -1,21 +1,32 @@
 import styled from 'styled-components'
-import { fixedTop } from '../utils'
+import { lighten } from 'polished'
+import { teal, elevation } from '../utils'
 
-const color = 'white'
-
-// Passing props and using variables
 export const Button = styled.button`
-  background-color: ${({ type }) => type === 'cancel' ? 'tomato' : 'indigo'};
+  background-color: ${teal};
   border-radius: 4px;
   padding: 5px 10px;
   font-size: 2rem;
   border: none;
-  color: ${color};
+  color: white;
+  transition: 0.3s ease box-shadow background;
+  ${elevation[1]};
+  &:hover {
+    background-color: ${lighten(0.27, teal)};
+    ${elevation[2]};
+  }
+  ${({size}) => {
+    if (size === 'small') {
+      return `
+        font-size: 1rem;
+        padding: 3px 10px;
+      `
+    }
+  }}
 `
 
-// Extending styles, using CSS helper
 export const OutlinedButton = styled(Button)`
   background-color: transparent;
-  border: white;
-  ${fixedTop}
+  border: 2px solid ${teal};
+  color: ${teal};
 `
