@@ -1,11 +1,43 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import logo from './logo.svg'
 import './App.css'
 
+// breakpoints
+const sizes = {
+  sm: 400,
+  md: 960,
+  lg: 1140
+}
+
+// media templates
+// returning object with breakpoint functions which takes CSS code as 'args'
+const above = Object.keys(sizes).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (min-width: ${sizes[label] / 16}rem) {
+      ${css(...args)}
+    }
+  `
+  return acc
+}, {})
+
+const below = Object.keys(sizes).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (max-width: ${sizes[label] / 16}rem) {
+      ${css(...args)}
+    }
+  `
+  return acc
+}, {})
+
 const Heading = styled.h1`
   font-size: 2rem;
+  ${below.md`
+    color: blue;
+  `}
 `
+
+console.log(below)
 
 const color = 'white'
 
